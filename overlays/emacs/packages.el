@@ -1,4 +1,5 @@
-(use-package general)
+(use-package general
+  :config (general-override-mode))
 (use-package undo-fu)
 (use-package undo-fu-session
   :custom

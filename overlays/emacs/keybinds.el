@@ -1,5 +1,8 @@
+(general-create-definer my-bind
+  :states '(motion normal)
+  :keymaps 'override)
 ;; root keybinds
-(general-def 'motion
+(my-bind
   :prefix "SPC"
   "" nil
   "b" '(:ignore t :wk "buffer")
@@ -12,21 +15,21 @@
   "RET" 'vterm-toggle)
 
 ;; buffer related keybinds
-(general-def 'motion
+(my-bind
   :prefix "SPC b"
   "b" 'ivy-switch-buffer
   "d" 'kill-current-buffer
   "l" 'evil-switch-to-windows-last-buffer)
 
 ;; file related keybinds
-(general-def 'motion
+(my-bind
  :prefix "SPC f"
  "f" 'counsel-find-file
  "r" 'counsel-recentf
   "t" 'treemacs)
 		 
 ;; window related keybinds
-(general-def 'motion
+(my-bind
   :prefix "SPC w"
   "h" 'evil-window-left
   "j" 'evil-window-down
@@ -53,7 +56,7 @@
   "w" 'winum-select-window-by-number)
 
 ;; help related keybinds
-(general-def 'motion
+(my-bind
   :prefix "SPC h"
   "f" 'counsel-describe-function
   "v" 'counsel-describe-variable
@@ -66,7 +69,7 @@
   (restart-emacs '("--debug-init")))
 
 ;; quit related keybinds
-(general-def 'motion
+(my-bind
   :prefix "SPC q"
   "q" 'save-buffers-kill-terminal
   "Q" 'evil-quit-all-with-error-code
@@ -74,24 +77,16 @@
   "R" 'restart-debug-init)
 
 ;; git keybinds
-(general-def 'motion
+(my-bind
   :prefix "SPC g"
   "g" 'magit-status
   "s" 'magit-status
   "h" 'hydra-git-gutter/body)
 
 ;; toggle keybinds
-(general-create-definer toggle-leader-def
+(my-bind
   :prefix "SPC t"
-  :states 'motion)
-
-(toggle-leader-def
   "t" 'toggle-truncate-lines
   "l" 'display-line-numbers-mode
   "f" 'treemacs
   "v" 'vterm-toggle)
-
-;; unbind magit map
-(general-unbind 'evil-magit-state magit-mode-map
-  "SPC"
-  "S-SPC")
