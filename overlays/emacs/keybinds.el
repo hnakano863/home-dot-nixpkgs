@@ -76,7 +76,9 @@
 ;; git keybinds
 (general-def 'motion
   :prefix "SPC g"
-  "g" 'magit-status)
+  "g" 'magit-status
+  "s" 'magit-status
+  "h" 'hydra-git-gutter/body)
 
 ;; toggle keybinds
 (general-create-definer toggle-leader-def

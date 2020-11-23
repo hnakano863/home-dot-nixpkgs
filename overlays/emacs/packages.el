@@ -13,6 +13,7 @@
   :after (undo-fu)
   :config (evil-mode 1))
 
+(use-package hydra)
 (use-package which-key
   :config
   (which-key-setup-side-window-bottom)
