@@ -1,0 +1,1 @@
+(setq treemacs-python-executable "@python@/bin/python")
