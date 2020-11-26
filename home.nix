@@ -11,7 +11,7 @@
   home.homeDirectory = "/home/hnakano";
 
   home.packages = with pkgs; [
-    firefox-bin exa fd fzf ripgrep bat gimp
+    firefox-bin exa fd fzf ripgrep bat gimp julia-bin
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
