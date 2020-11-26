@@ -12,6 +12,7 @@
   "q" '(:ignore t :wk "quit")
   "g" '(:ignode t :wk "git")
   "t" '(:ignore t :wk "toggle")
+  "e" '(hydra-smartparens-edit/body t :wk "edit")
   "RET" 'vterm-toggle)
 
 ;; buffer related keybinds

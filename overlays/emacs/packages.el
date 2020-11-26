@@ -78,6 +78,17 @@
      (reusable-frames . visible)
      (window-height . 0.3))))
 
+(use-package smartparens
+  :hook ((emacs-lisp-mode . smartparens-mode))
+  :config (require 'smartparens-config)
+  :general 'visual
+  ("M-(" 'sp-wrap-round)
+  ("M-[" 'sp-wrap-square)
+  ("M-{" 'sp-wrap-curly)
+  ("M-<" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "<")))
+  ("M-'" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "'")))
+  ("M-\"" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\""))))
+
 (use-package nix-mode
   :mode "\\.nix\\'")
 

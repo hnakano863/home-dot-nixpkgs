@@ -44,6 +44,7 @@ in {
 
       vterm
       vterm-toggle
+      smartparens
 
       nix-mode
       fish-mode
