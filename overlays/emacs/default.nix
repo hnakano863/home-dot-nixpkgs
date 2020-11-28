@@ -1,6 +1,17 @@
 self: super:
 let
+  jisyo = super.fetchurl {
+    name = "SKK-JISYO.L";
+    url = "https://skk-dev.github.io/dict/SKK-JISYO.L.gz";
+    sha256 = "0ps0a7sbkryd6hxvphq14i7g5wci4gvr0vraac8ia2ww67a2xbyc";
+    downloadToTemp = true;
+    postFetch = ''
+      ${super.gzip}/bin/gzip -cd $downloadedFile > $out
+    '';
+  };
+
   environment-el = super.runCommand "environment.el" {
+    inherit jisyo;
     inherit (super.python3Packages) python;
   } ''substituteAll ${./environment.el.in} $out'';
   
@@ -23,7 +34,9 @@ let
   '';
 in {
   emacs = super.emacsWithPackages (epkgs: with epkgs;
-    (super.lib.lists.singleton siteLispSetup) ++ [
+    [
+      siteLispSetup
+      
       use-package
       evil
       hydra
@@ -45,6 +58,7 @@ in {
       vterm
       vterm-toggle
       smartparens
+      ddskk
 
       nix-mode
       fish-mode

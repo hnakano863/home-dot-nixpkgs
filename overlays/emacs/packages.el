@@ -89,6 +89,10 @@
   ("M-'" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "'")))
   ("M-\"" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\""))))
 
+(use-package skk
+  :custom
+  (default-input-method "japanese-skk"))
+
 (use-package nix-mode
   :mode "\\.nix\\'")
 

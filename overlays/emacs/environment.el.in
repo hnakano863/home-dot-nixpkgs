@@ -1,1 +1,2 @@
-(setq treemacs-python-executable "@python@/bin/python")
+(setq treemacs-python-executable "@python@/bin/python"
+      skk-large-jisyo "@jisyo@")
