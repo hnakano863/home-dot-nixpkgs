@@ -53,6 +53,8 @@ in
         migemo
   
         doom-themes
+        all-the-icons
+        treemacs-all-the-icons
         
         nix-mode
         fish-mode

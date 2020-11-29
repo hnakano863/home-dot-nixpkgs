@@ -109,6 +109,17 @@
     (add-to-list 'ivy-re-builders-alist
 		 '(swiper . my/ivy--regex-migemo-plus))))
 
+(use-package all-the-icons)
+(use-package treemacs-all-the-icons)
+(use-package doom-themes
+  :custom
+  (doom-themes-enable-bold t)
+  (doom-themes-enable-italic t)
+  (doom-themes-treemacs-theme "doom-colors")
+  :config
+  (load-theme 'doom-opera t)
+  (doom-themes-treemacs-config))
+
 (use-package nix-mode
   :mode "\\.nix\\'")
 
