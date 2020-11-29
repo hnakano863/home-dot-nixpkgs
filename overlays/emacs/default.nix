@@ -53,6 +53,7 @@ in
         migemo
   
         doom-themes
+        doom-modeline
         all-the-icons
         treemacs-all-the-icons
         

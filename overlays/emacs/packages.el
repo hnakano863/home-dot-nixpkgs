@@ -111,6 +111,9 @@
 
 (use-package all-the-icons)
 (use-package treemacs-all-the-icons)
+(use-package doom-modeline
+  :config
+  (doom-modeline-mode 1))
 (use-package doom-themes
   :custom
   (doom-themes-enable-bold t)
