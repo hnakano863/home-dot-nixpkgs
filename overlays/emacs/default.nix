@@ -26,7 +26,7 @@ in
     ((emacsPackagesFor emacs).overrideScope' overrides).emacsWithPackages
       (epkgs: with epkgs; [
         siteLispSetup
-        # my-ivy-migemo
+        my-ivy-migemo
     
         use-package
         evil

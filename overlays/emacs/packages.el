@@ -27,7 +27,7 @@
   (ivy-count-format "(%d/%d) ")
   :config (ivy-mode 1)
   :general
-  ("C-s" 'swiper-isearch)
+  ("C-s" 'swiper)
   ("M-x" 'counsel-M-x)
   ("C-x C-f" 'counsel-find-file)
   ("M-y" 'counsel-yank-pop)
@@ -101,9 +101,13 @@
   :config
   (migemo-init))
 
-; (use-package my-ivy-migemo
-;   :config
-;   (setf (alist-get 'swiper ivy-re-builders-alist) #'my/ivy--regex-migemo-plus))
+(use-package my-ivy-migemo
+  :config
+  (if (alist-get 'swiper ivy-re-builders-alist)
+      (setf (alist-get 'swiper ivy-re-builders-alist)
+	    #'my/ivy--regex-migemo-plus)
+    (add-to-list 'ivy-re-builders-alist
+		 '(swiper . my/ivy--regex-migemo-plus))))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
