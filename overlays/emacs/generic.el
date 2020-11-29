@@ -7,3 +7,8 @@
       (expand-file-name
        (concat (temporary-file-directory)
 	       "recentf")))
+
+(if (alist-get 'font default-frame-alist)
+    (setf (alist-get 'font default-frame-alist) "Cica-12")
+  (add-to-list 'default-frame-alist
+	       '(font . "Cica-12")))
