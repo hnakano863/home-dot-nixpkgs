@@ -5,18 +5,13 @@ let
     inherit cmigemo;
     inherit (python3Packages) python;
   } ''substituteAll ${./environment.el.in} $out'';
-  
-  generic-el = builtins.readFile ./generic.el;
-  packages-el = builtins.readFile ./packages.el;
-  hydrae-el = builtins.readFile ./hydrae.el;
-  keybinds-el = builtins.readFile ./keybinds.el;
 
   default-el = super.writeText "default.el" ''
     (load "${environment-el}")
-    ${generic-el}
-    ${packages-el}
-    ${hydrae-el}
-    ${keybinds-el}
+    (load "${./generic.el}")
+    (load "${./packages.el}")
+    (load "${./hydrae.el}")
+    (load "${./keybinds.el}")
   '';
 
   siteLispSetup = super.runCommand "default.el" {} ''
