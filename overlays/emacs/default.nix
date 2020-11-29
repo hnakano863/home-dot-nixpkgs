@@ -52,6 +52,8 @@ in
         ddskk
         migemo
   
+        doom-themes
+        
         nix-mode
         fish-mode
       ]

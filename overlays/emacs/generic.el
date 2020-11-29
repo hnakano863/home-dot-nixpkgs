@@ -12,3 +12,7 @@
     (setf (alist-get 'font default-frame-alist) "Cica-12")
   (add-to-list 'default-frame-alist
 	       '(font . "Cica-12")))
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
