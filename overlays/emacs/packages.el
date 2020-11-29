@@ -55,9 +55,7 @@
   (treemacs-indentation 1)
   :general
   ("C-x w 0" 'treemacs-select-window))
-(use-package treemacs-evil
-  :after (treemacs evil))
-
+(use-package treemacs-evil)
 (use-package vterm
   :after evil
   :config
@@ -91,7 +89,21 @@
 
 (use-package skk
   :custom
-  (default-input-method "japanese-skk"))
+  (default-input-method "japanese-skk")
+  (skk-jisyo-code 'utf-8-unix))
+
+(use-package migemo
+  :custom
+  (migemo-options '("-q" "--emacs"))
+  (migemo-user-dictionary nil)
+  (migemo-regex-dictionary nil)
+  (migemo-coding-system 'utf-8-unix)
+  :config
+  (migemo-init))
+
+; (use-package my-ivy-migemo
+;   :config
+;   (setf (alist-get 'swiper ivy-re-builders-alist) #'my/ivy--regex-migemo-plus))
 
 (use-package nix-mode
   :mode "\\.nix\\'")

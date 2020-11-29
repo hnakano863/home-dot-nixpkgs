@@ -1,2 +1,4 @@
 (setq treemacs-python-executable "@python@/bin/python"
-      skk-large-jisyo "@jisyo@")
+      skk-large-jisyo "@jisyo@/share/SKK-JISYO.combined"
+      migemo-command "@cmigemo@/bin/cmigemo"
+      migemo-dictionary "@cmigemo@/share/migemo/utf-8/migemo-dict")
