@@ -48,6 +48,7 @@ in
   
         vterm
         vterm-toggle
+        eshell-toggle
         smartparens
         ddskk
         migemo
@@ -56,6 +57,7 @@ in
         doom-modeline
         all-the-icons
         treemacs-all-the-icons
+        ivy-rich
         
         nix-mode
         fish-mode

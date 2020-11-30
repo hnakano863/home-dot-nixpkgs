@@ -76,6 +76,12 @@
      (reusable-frames . visible)
      (window-height . 0.3))))
 
+(use-package eshell-toggle
+  :custom
+  (eshell-toggle-size-fraction 3)
+  (eshell-toggle-use-projectile-root t)
+  (eshell-toggle-run-command nil))
+
 (use-package smartparens
   :hook ((emacs-lisp-mode . smartparens-mode))
   :config (require 'smartparens-config)
@@ -122,6 +128,9 @@
   :config
   (load-theme 'doom-opera t)
   (doom-themes-treemacs-config))
+
+(use-package ivy-rich
+  :config (ivy-rich-mode 12))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
