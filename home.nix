@@ -44,6 +44,7 @@
     userEmail = "notchi863@gmail.com";
     ignores = [ "*~" "*.swp" ];
     extraConfig = {
+      core.askPass = "";
       pull.rebase = false;
     };
   };
