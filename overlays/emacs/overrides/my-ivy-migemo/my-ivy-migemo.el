@@ -1,12 +1,14 @@
 (require 'ivy)
 (require 'migemo)
 
+;;;###autoload
 (defun my/migemo-get-pattern-shyly (word)
   (replace-regexp-in-string
    "\\\\("
    "\\\\(?:"
    (migemo-get-pattern word)))
 
+;;;###autoload
 (defun my/ivy--regex-migemo-pattern (word)
   (cond
    ((string-match "\\(.*\\)\\(\\[[^\0]+\\]\\)"  word)
@@ -17,6 +19,7 @@
    (t
     (my/migemo-get-pattern-shyly word))))
 
+;;;###autoload
 (defun my/ivy--regex-migemo (str)
   (when (string-match-p "\\(?:[^\\]\\|^\\)\\\\\\'" str)
     (setq str (substring str 0 -1)))
@@ -42,6 +45,7 @@
               ".*")
              nil t))))))
 
+;;;###autoload
 (defun my/ivy--regex-migemo-plus (str)
   (cl-letf (((symbol-function 'ivy--regex) #'my/ivy--regex-migemo))
     (ivy--regex-plus str)))

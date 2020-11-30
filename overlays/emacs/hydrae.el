@@ -1,5 +1,7 @@
 ;; hydra-git-gutter
 ;; toggle git-gutter popup window
+
+;;;###autoload
 (defun my--git-gutter:toggle-popup-hunk ()
   (interactive)
   (if (window-live-p (git-gutter:popup-buffer-window))

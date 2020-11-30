@@ -1,6 +1,6 @@
 (use-package general
   :config (general-override-mode))
-(use-package undo-fu)
+
 (use-package undo-fu-session
   :custom
   (undo-fu-session-directory "/tmp/undo-fu-session")
@@ -14,18 +14,22 @@
   :after (undo-fu)
   :config (evil-mode 1))
 
-(use-package hydra)
 (use-package which-key
   :config
   (which-key-setup-side-window-bottom)
   (which-key-mode))
 
 (use-package counsel
+  :defer t
   :custom
   (ivy-hight 15)
   (ivy-use-virtual-buffers t)
   (ivy-count-format "(%d/%d) ")
-  :config (ivy-mode 1)
+  (ivy-re-builders-alist '((swiper . my/ivy--regex-migemo-plus)
+			   (t . ivy--regex-plus)))
+  :config
+  (require 'my-ivy-migemo)
+  (ivy-mode 1)
   :general
   ("C-s" 'swiper)
   ("M-x" 'counsel-M-x)
@@ -35,33 +39,40 @@
   ("C-h v" 'counsel-describe-variable)
   ("C-x b" 'ivy-switch-buffer))
 
-(use-package restart-emacs)
+(use-package restart-emacs
+  :defer t)
+
 (use-package winum
   :config (winum-mode))
 
 (use-package git-gutter
   :config (global-git-gutter-mode t))
-(use-package magit)
-(use-package evil-magit
-  :after (evil magit)
+
+(use-package magit
+  :defer t
   :custom
   (evil-magit-state 'normal)
-  (evil-magit-use-y-for-yank t))
+  (evil-magit-use-y-for-yank t)
+  :config
+  (require 'evil-magit))
 
 (use-package treemacs
-  :after (winum)
+  :after (winum evil)
   :custom
   (treemacs-width 30)
   (treemacs-indentation 1)
   :general
-  ("C-x w 0" 'treemacs-select-window))
-(use-package treemacs-evil)
+  ("C-x w 0" 'treemacs-select-window)
+  :config
+  (require 'treemacs-evil))
+
 (use-package vterm
-  :after evil
+  :defer t
   :config
   (evil-set-initial-state 'vterm-mode 'insert))
 
 (use-package vterm-toggle
+  :defer t
   :custom
   (vterm-toggle-fullscreen-p nil)
   (vterm-toggle-use-dedicated-buffer t)
@@ -77,6 +88,7 @@
      (window-height . 0.3))))
 
 (use-package eshell-toggle
+  :defer t
   :custom
   (eshell-toggle-size-fraction 3)
   (eshell-toggle-use-projectile-root t)
@@ -94,32 +106,23 @@
   ("M-\"" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\""))))
 
 (use-package skk
+  :defer t
   :custom
   (default-input-method "japanese-skk")
   (skk-jisyo-code 'utf-8-unix))
 
 (use-package migemo
+  :defer t
   :custom
   (migemo-options '("-q" "--emacs"))
   (migemo-user-dictionary nil)
   (migemo-regex-dictionary nil)
-  (migemo-coding-system 'utf-8-unix)
-  :config
-  (migemo-init))
+  (migemo-coding-system 'utf-8-unix))
 
-(use-package my-ivy-migemo
-  :config
-  (if (alist-get 'swiper ivy-re-builders-alist)
-      (setf (alist-get 'swiper ivy-re-builders-alist)
-	    #'my/ivy--regex-migemo-plus)
-    (add-to-list 'ivy-re-builders-alist
-		 '(swiper . my/ivy--regex-migemo-plus))))
-
-(use-package all-the-icons)
-(use-package treemacs-all-the-icons)
 (use-package doom-modeline
   :config
   (doom-modeline-mode 1))
+
 (use-package doom-themes
   :custom
   (doom-themes-enable-bold t)
@@ -130,11 +133,10 @@
   (doom-themes-treemacs-config))
 
 (use-package ivy-rich
-  :config (ivy-rich-mode 12))
+  :hook (ivy-mode . ivy-rich-mode))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
 
 (use-package fish-mode
   :mode "\\.fish\\'")
-

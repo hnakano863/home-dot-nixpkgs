@@ -7,11 +7,16 @@ let
   } ''substituteAll ${./environment.el.in} $out'';
 
   default-el = super.writeText "default.el" ''
+    (require 'initchart)
+    (initchart-record-execution-time-of load file)
+    (initchart-record-execution-time-of require feature)
+    (setq gc-cons-threshold most-positive-fixnum)
     (load "${environment-el}")
     (load "${./generic.el}")
     (load "${./packages.el}")
     (load "${./hydrae.el}")
     (load "${./keybinds.el}")
+    (setq gc-cons-threshold 16777216)
   '';
 
   siteLispSetup = super.runCommand "default.el" {} ''
@@ -61,6 +66,8 @@ in
         
         nix-mode
         fish-mode
+
+        initchart
       ]
     );
 }
