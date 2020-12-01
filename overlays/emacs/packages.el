@@ -11,7 +11,6 @@
   :custom
   (evil-want-C-u-scroll t)
   (evil-undo-system 'undo-fu)
-  :after (undo-fu)
   :config (evil-mode 1))
 
 (use-package which-key
