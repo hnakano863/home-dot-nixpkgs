@@ -67,18 +67,14 @@
   "k" 'describe-key
   "m" 'describe-mode)
 
-;; restart-debug-init
-;(defun restart-debug-init ()
-;  (interactive)
-;  (restart-emacs '("--debug-init")))
-
 ;; quit related keybinds
 (my-bind
   :prefix "SPC q"
   "q" 'save-buffers-kill-terminal
-  "Q" 'evil-quit-all-with-error-code)
-  ;"r" 'restart-emacs
-  ;"R" 'restart-debug-init)
+  "Q" 'evil-quit-all-with-error-code
+  "r" 'restart-emacs
+  "R" '((lambda () (interactive "P") (restart-emacs '("--debug-init")))
+	:wk "restart-debug-init"))
 
 ;; git keybinds
 (my-bind

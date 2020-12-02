@@ -82,6 +82,10 @@
       '';
     };
 
+    restart-emacs = {
+      enable = true;
+    };
+
     treemacs = {
       enable = true;
       config = ''
@@ -108,7 +112,6 @@
         (projectile-sort-order 'recentf-active)
       '';
     };
-
 
     magit = {
       enable = true;
