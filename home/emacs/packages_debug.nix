@@ -1,13 +1,9 @@
 { config, pkgs, lib, ... }:
 {
   programs.emacs.init.usePackage = {
-    general = {
-      enable = true;
-    };
 
-    hydra = {
-      enable = true;
-    };
+    general.enable = true;
+    hydra.enable = true;
 
     evil = {
       enable = true;
@@ -82,9 +78,7 @@
       '';
     };
 
-    restart-emacs = {
-      enable = true;
-    };
+    restart-emacs.enable = true;
 
     treemacs = {
       enable = true;
@@ -113,6 +107,9 @@
       '';
     };
 
+    git-gutter.enable = true;
+    git-gutter.config = "(global-git-gutter-mode t)";
+
     magit = {
       enable = true;
       config = ''
@@ -129,6 +126,21 @@
     treemacs-evil.enable = true;
     treemacs-projectile.enable = true;
     treemacs-magit.enable = true;
+
+    smartparens = {
+      enable = true;
+      hook = [ "(emacs-lisp-mode . smartparens-mode)" ];
+      config = "(require 'smartparens-config)";
+      extraConfig = ''
+        :general 'visual
+        ("M-(" 'sp-wrap-round)
+        ("M-[" 'sp-wrap-square)
+        ("M-{" 'sp-wrap-curly)
+        ("M-<" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "<")))
+        ("M-'" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "'")))
+        ("M-\"" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\"")))
+      '';
+    };
 
     nix-mode = {
       enable = true;

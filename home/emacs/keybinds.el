@@ -14,8 +14,8 @@
   "g" '(:ignode t :wk "git")
   "t" '(:ignore t :wk "toggle")
   :keymaps 'projectile-mode-map
-  "p" '(:keymap projectile-command-map :wk "projectile"))
-  ;"e" '(hydra-smartparens-edit/body t :wk "edit")
+  "p" '(:keymap projectile-command-map :wk "projectile")
+  "e" '(hydra-smartparens-edit/body t :wk "edit"))
   ;"RET" 'vterm-toggle)
 
 ;; buffer related keybinds
@@ -80,8 +80,8 @@
 (my-bind
   :prefix "SPC g"
   "g" 'magit-status
-  "s" 'magit-status)
-;  "h" 'hydra-git-gutter/body)
+  "s" 'magit-status
+  "h" 'hydra-git-gutter/body)
 
 ;; toggle keybinds
 (my-bind

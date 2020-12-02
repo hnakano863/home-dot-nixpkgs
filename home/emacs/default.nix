@@ -23,7 +23,7 @@ in
     '';
     
     postlude = ''
-      ;(load "${./hydrae.el}")
+      (load "${./hydrae.el}")
       (load "${./keybinds.el}")
     ''; 
   };
