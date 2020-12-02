@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
+let
+  nur-no-pkgs = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {};
+in
 {
+  imports = [
+    nur-no-pkgs.repos.rycee.hmModules.emacs-init
+    ./home/emacs
+  ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -26,7 +32,7 @@
     exec fish
   '';
 
-  programs.emacs.enable = true;
+  # programs.emacs.enable = true;
 
   programs.fish = {
     enable = true;
