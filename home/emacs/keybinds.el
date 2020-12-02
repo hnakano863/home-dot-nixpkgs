@@ -1,6 +1,7 @@
 (general-create-definer my-bind
   :states '(motion normal)
   :keymaps 'override)
+
 ;; root keybinds
 (my-bind
   :prefix "SPC"
@@ -12,8 +13,10 @@
   "q" '(:ignore t :wk "quit")
   "g" '(:ignode t :wk "git")
   "t" '(:ignore t :wk "toggle")
-  "e" '(hydra-smartparens-edit/body t :wk "edit")
-  "RET" 'vterm-toggle)
+  :keymaps 'projectile-mode-map
+  "p" '(:keymap projectile-command-map :wk "projectile"))
+  ;"e" '(hydra-smartparens-edit/body t :wk "edit")
+  ;"RET" 'vterm-toggle)
 
 ;; buffer related keybinds
 (my-bind
@@ -27,7 +30,7 @@
  :prefix "SPC f"
  "f" 'counsel-find-file
  "r" 'counsel-recentf
-  "t" 'treemacs)
+ "t" 'treemacs)
 		 
 ;; window related keybinds
 (my-bind
@@ -65,29 +68,29 @@
   "m" 'describe-mode)
 
 ;; restart-debug-init
-(defun restart-debug-init ()
-  (interactive)
-  (restart-emacs '("--debug-init")))
+;(defun restart-debug-init ()
+;  (interactive)
+;  (restart-emacs '("--debug-init")))
 
 ;; quit related keybinds
 (my-bind
   :prefix "SPC q"
   "q" 'save-buffers-kill-terminal
-  "Q" 'evil-quit-all-with-error-code
-  "r" 'restart-emacs
-  "R" 'restart-debug-init)
+  "Q" 'evil-quit-all-with-error-code)
+  ;"r" 'restart-emacs
+  ;"R" 'restart-debug-init)
 
 ;; git keybinds
 (my-bind
   :prefix "SPC g"
   "g" 'magit-status
-  "s" 'magit-status
-  "h" 'hydra-git-gutter/body)
+  "s" 'magit-status)
+;  "h" 'hydra-git-gutter/body)
 
 ;; toggle keybinds
 (my-bind
   :prefix "SPC t"
   "t" 'toggle-truncate-lines
   "l" 'display-line-numbers-mode
-  "f" 'treemacs
-  "v" 'vterm-toggle)
+  "f" 'treemacs)
+  ;"v" 'vterm-toggle)
