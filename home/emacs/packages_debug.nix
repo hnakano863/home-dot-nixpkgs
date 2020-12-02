@@ -4,6 +4,23 @@
 
     general.enable = true;
     hydra.enable = true;
+    restart-emacs.enable = true;
+
+    git-gutter.enable = true;
+    git-gutter.config = "(global-git-gutter-mode t)";
+
+    undo-fu.enable = true;
+    undo-fu-session.enable = true;
+    undo-fu-session.config = "(global-undo-fu-session-mode 1)";
+
+    winum.enable = true;
+    winum.config = "(winum-mode)";
+
+    which-key.enable = true;
+    which-key.config = ''
+      (which-key-setup-side-window-bottom)
+      (which-key-mode)
+    '';
 
     evil = {
       enable = true;
@@ -14,17 +31,6 @@
         :custom
         (evil-want-C-u-scroll t)
         (evil-undo-system 'undo-fu)
-      '';
-    };
-
-    undo-fu = {
-      enable = true;
-    };
-
-    undo-fu-session = {
-      enable = true;
-      config = ''
-        (global-undo-fu-session-mode)
       '';
     };
 
@@ -49,48 +55,11 @@
       '';
     };
 
-    ivy-prescient = {
-      enable = true;
-      config = ''
-        (ivy-prescient-mode 1)
-      '';
-    };
+    ivy-prescient.enable = true;
+    ivy-prescient.config = "(ivy-prescient-mode 1)";
 
-    ivy-rich = {
-      enable = true;
-      config = ''
-        (ivy-rich-mode 1)
-      '';
-    };
-    
-    which-key = {
-      enable = true;
-      config = ''
-        (which-key-setup-side-window-bottom)
-        (which-key-mode)
-      '';
-    };
-
-    winum = {
-      enable = true;
-      config = ''
-        (winum-mode)
-      '';
-    };
-
-    restart-emacs.enable = true;
-
-    treemacs = {
-      enable = true;
-      config = ''
-        (treemacs-git-mode 'deferred)
-      '';
-      extraConfig = ''
-        :custom
-        (treemacs-width 30)
-        (treemacs-python-executable "${pkgs.python3}/bin/python")
-      '';
-    };
+    ivy-rich.enable = true;
+    ivy-rich.config = "(ivy-rich-mode 1)";
     
     projectile = {
       enable = true;
@@ -107,9 +76,6 @@
       '';
     };
 
-    git-gutter.enable = true;
-    git-gutter.config = "(global-git-gutter-mode t)";
-
     magit = {
       enable = true;
       config = ''
@@ -121,8 +87,19 @@
         (evil-magit-use-y-for-yank t)
       '';
     };
-
     evil-magit.enable = true;
+
+    treemacs = {
+      enable = true;
+      config = ''
+        (treemacs-git-mode 'deferred)
+      '';
+      extraConfig = ''
+        :custom
+        (treemacs-width 30)
+        (treemacs-python-executable "${pkgs.python3}/bin/python")
+      '';
+    };
     treemacs-evil.enable = true;
     treemacs-projectile.enable = true;
     treemacs-magit.enable = true;
@@ -142,14 +119,10 @@
       '';
     };
 
-    nix-mode = {
-      enable = true;
-      mode = [ ''"\\.nix\\'"'' ];
-    };
+    nix-mode.enable = true;
+    nix-mode.mode = [ ''"\\.nix\\'"'' ];
 
-    fish-mode = {
-      enable = true;
-      mode = [ ''"\\.fish\\'"'' ];
-    };
+    fish-mode.enable = true;
+    fish-mode.mode = [ ''"\\.fish\\'"'' ];
   };
 }
