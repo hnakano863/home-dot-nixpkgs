@@ -119,6 +119,20 @@
       '';
     };
 
+    skk = {
+      package = "ddskk";
+      enable = true;
+      extraConfig = ''
+        :custom
+        (skk-jisyo-code 'utf-8-unix)
+        (skk-large-jisyo "${pkgs.skk-dicts}/share/SKK-JISYO.L")
+      '';
+    };
+
+    posframe.enable = true;
+    ddskk-posframe.enable = true;
+    ddskk-posframe.hook = [ "(skk-mode . ddskk-posframe-mode)" ];
+
     nix-mode.enable = true;
     nix-mode.mode = [ ''"\\.nix\\'"'' ];
 

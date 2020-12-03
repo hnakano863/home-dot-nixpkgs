@@ -6,7 +6,7 @@ in
 {
   imports = [ ./packages_debug.nix ];
   programs.emacs.enable = true;
-  programs.emacs.overrides = import ./overrides;
+  programs.emacs.overrides = import ./overrides { inherit pkgs; };
   programs.emacs.init = {
     enable = true;
     startupTimer = true;
