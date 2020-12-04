@@ -175,6 +175,9 @@ with pkgs;
       '';
     };
 
+    doom-modeline.enable = true;
+    doom-modeline.config = "(doom-modeline-mode 1)";
+
     nix-mode.enable = true;
     nix-mode.mode = [ ''"\\.nix\\'"'' ];
 
