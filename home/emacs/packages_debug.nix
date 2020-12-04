@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }:
+with pkgs;
 {
   programs.emacs.init.usePackage = {
 
@@ -63,7 +64,7 @@
     
     projectile = {
       enable = true;
-      extraPackages = with pkgs; [
+      extraPackages = [
         git fd ripgrep
       ];
       config = ''
@@ -97,7 +98,7 @@
       extraConfig = ''
         :custom
         (treemacs-width 30)
-        (treemacs-python-executable "${pkgs.python3}/bin/python")
+        (treemacs-python-executable "${python3}/bin/python")
       '';
     };
     treemacs-evil.enable = true;
@@ -125,13 +126,36 @@
       extraConfig = ''
         :custom
         (skk-jisyo-code 'utf-8-unix)
-        (skk-large-jisyo "${pkgs.skk-dicts}/share/SKK-JISYO.L")
+        (skk-large-jisyo "${skk-dicts}/share/SKK-JISYO.L")
+        (default-input-method "japanese-skk")
       '';
     };
 
     posframe.enable = true;
     ddskk-posframe.enable = true;
     ddskk-posframe.hook = [ "(skk-mode . ddskk-posframe-mode)" ];
+
+    migemo = with pkgs; {
+      enable = true;
+      extraConfig = ''
+        :custom
+        (migemo-options '("-q" "--emacs"))
+        (migemo-user-dictionary nil)
+        (migemo-regex-dictionary nil)
+        (migemo-command "${cmigemo}/bin/cmigemo")
+        (migemo-dictionary "${cmigemo}/share/migemo/utf-8/migemo-dict")
+      '';
+    };
+    my-ivy-migemo = {
+      enable = true;
+      extraConfig = ''
+        :custom
+        (ivy-re-builders-alist '((counsel-find-file . my/ivy--regex-migemo-plus)
+                                 (counsel-recentf . my/ivy--regex-migemo-plus)
+                                 (swiper . my/ivy--regex-migemo-plus)
+                                 (t . ivy--regex-plus)))
+      '';
+    };
 
     nix-mode.enable = true;
     nix-mode.mode = [ ''"\\.nix\\'"'' ];
