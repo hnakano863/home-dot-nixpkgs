@@ -165,7 +165,7 @@ with pkgs;
     doom-themes = {
       enable = true;
       config = ''
-        (load-theme 'doom-one t)
+        (load-theme 'doom-opera t)
         (require 'doom-themes-ext-treemacs)
         (doom-themes-treemacs-config)
       '';

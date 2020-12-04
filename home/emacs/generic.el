@@ -9,7 +9,7 @@
 	       "recentf")))
 
 (add-to-list 'default-frame-alist
-	     '(font . "Cica-12"))
+	     '(font . "Cica-14"))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
