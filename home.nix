@@ -17,7 +17,6 @@ in
 
   home.packages = with pkgs; [
     firefox-bin exa fd fzf ripgrep bat gimp julia-bin
-    emacs-all-the-icons-fonts
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];

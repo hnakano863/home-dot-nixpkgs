@@ -147,6 +147,7 @@ with pkgs;
         (migemo-dictionary "${cmigemo}/share/migemo/utf-8/migemo-dict")
       '';
     };
+
     my-ivy-migemo = {
       enable = true;
       extraConfig = ''
@@ -155,6 +156,22 @@ with pkgs;
                                  (counsel-recentf . my/ivy--regex-migemo-plus)
                                  (swiper . my/ivy--regex-migemo-plus)
                                  (t . ivy--regex-plus)))
+      '';
+    };
+
+    all-the-icons.enable = true;
+    all-the-icons.extraPackages = [ emacs-all-the-icons-fonts ];
+    
+    doom-themes = {
+      enable = true;
+      config = ''
+        (load-theme 'doom-one t)
+        (require 'doom-themes-ext-treemacs)
+        (doom-themes-treemacs-config)
+      '';
+      extraConfig = ''
+        :custom
+        (doom-themes-treemacs-theme "doom-colors")
       '';
     };
 
