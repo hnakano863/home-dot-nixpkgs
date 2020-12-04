@@ -4,7 +4,7 @@ let
   readFile = builtins.readFile;
 in
 {
-  imports = [ ./packages_debug.nix ];
+  imports = [ ./packages.nix ];
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
   programs.emacs.init = {
@@ -14,9 +14,9 @@ in
     recommendedGcSettings = true;
 
     prelude = ''
-      ;(require 'initchart)
-      ;(initchart-record-execution-time-of load file)
-      ;(initchart-record-execution-time-of require feature)
+      (require 'initchart)
+      (initchart-record-execution-time-of load file)
+      (initchart-record-execution-time-of require feature)
       (load "${./generic.el}")
       (require 'general)
       (require 'hydra)
