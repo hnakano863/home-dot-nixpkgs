@@ -6,6 +6,7 @@ with pkgs;
     general.enable = true;
     hydra.enable = true;
     restart-emacs.enable = true;
+    restart-emacs.command = [ "restart-emacs" ];
     initchart.enable = true;
 
     git-gutter.enable = true;
@@ -38,7 +39,9 @@ with pkgs;
 
     counsel = {
       enable = true;
-      demand = true;
+      command = [
+        "counsel-recentf"
+      ];
       config = ''
         (ivy-mode 1)
       '';
@@ -58,19 +61,17 @@ with pkgs;
     };
 
     ivy-prescient.enable = true;
-    ivy-prescient.config = "(ivy-prescient-mode 1)";
+    ivy-prescient.hook = [ "(ivy-mode . ivy-prescient-mode)" ];
 
     ivy-rich.enable = true;
-    ivy-rich.config = "(ivy-rich-mode 1)";
+    ivy-rich.hook = [ "(ivy-mode . ivy-rich-mode)" ];
     
     projectile = {
       enable = true;
       extraPackages = [
         git fd ripgrep
       ];
-      config = ''
-        (projectile-mode 1)
-      '';
+      hook = [ "(ivy-mode . projectile-mode)" ];
       extraConfig = ''
         :custom
         (projectile-indexing-method 'alien)
@@ -80,21 +81,31 @@ with pkgs;
 
     magit = {
       enable = true;
-      config = ''
-        (require 'evil-magit)
-      '';
+      command = [ "magit-status" ];
+      config = "(require 'evil-magit)";
+    };
+
+    evil-magit ={
+      enable = true;
+      defer = true;
       extraConfig = ''
         :custom
         (evil-magit-state 'normal)
         (evil-magit-use-y-for-yank t)
       '';
     };
-    evil-magit.enable = true;
 
     treemacs = {
       enable = true;
+      command = [
+        "treemacs"
+        "treemacs-select-window"
+      ];
       config = ''
         (treemacs-git-mode 'deferred)
+        (require 'treemacs-evil)
+        (require 'treemacs-magit)
+        (require 'treemacs-projectile)
       '';
       extraConfig = ''
         :custom
@@ -103,8 +114,11 @@ with pkgs;
       '';
     };
     treemacs-evil.enable = true;
+    treemacs-evil.defer = true;
     treemacs-projectile.enable = true;
+    treemacs-projectile.defer = true;
     treemacs-magit.enable = true;
+    treemacs-magit.defer = true;
 
     smartparens = {
       enable = true;
@@ -123,6 +137,7 @@ with pkgs;
 
     skk = {
       package = "ddskk";
+      defer = true;
       enable = true;
       extraConfig = ''
         :custom
@@ -133,11 +148,13 @@ with pkgs;
     };
 
     posframe.enable = true;
+    posframe.defer = true;
     ddskk-posframe.enable = true;
     ddskk-posframe.hook = [ "(skk-mode . ddskk-posframe-mode)" ];
 
     migemo = with pkgs; {
       enable = true;
+      defer = true;
       extraConfig = ''
         :custom
         (migemo-options '("-q" "--emacs"))
@@ -150,6 +167,7 @@ with pkgs;
 
     my-ivy-migemo = {
       enable = true;
+      command = [ "my/ivy--regex-migemo-plus" ];
       extraConfig = ''
         :custom
         (ivy-re-builders-alist '((counsel-find-file . my/ivy--regex-migemo-plus)

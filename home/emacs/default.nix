@@ -13,11 +13,20 @@ in
 
     recommendedGcSettings = true;
 
+    earlyInit = ''
+      (push '(menu-bar-lines . 0) default-frame-alist)
+      (push '(tool-bar-lines . 0) default-frame-alist)
+      (push '(vertical-scroll-bars . nil) default-frame-alist)
+      (push '(font . "Cica-14") default-frame-alist)
+    '';
+
     prelude = ''
       (require 'initchart)
       (initchart-record-execution-time-of load file)
       (initchart-record-execution-time-of require feature)
-      (load "${./generic.el}")
+      (setq backup-directory-alist `((".*" . ,temporary-file-directory))
+            auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+            auto-save-list-file-prefix nil)
       (require 'general)
       (require 'hydra)
     '';
