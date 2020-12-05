@@ -19,5 +19,19 @@
           "C-p" 'company-select-previous)
       '';
     };
+
+    lsp-mode = {
+      enable = true;
+      hook = [
+        "(lsp-mode . lsp-enable-which-key-integration)"
+      ];
+      config = ''
+        (require 'lsp-modeline)
+      '';
+      extraConfig = ''
+        :custom
+        (lsp-keymap-prefix "C-c l")
+      '';
+    };
   };
 }
