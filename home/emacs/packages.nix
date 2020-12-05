@@ -196,6 +196,20 @@ with pkgs;
     doom-modeline.enable = true;
     doom-modeline.config = "(doom-modeline-mode 1)";
 
+    hide-mode-line = {
+      enable = true;
+      hook = [ "(help-mode . hide-mode-line-mode)" ];
+    };
+
+    shackle = {
+      enable = true;
+      config = "(shackle-mode 1)";
+      extraConfig = ''
+        :custom
+        (shackle-rules '(("*Help*" :align below :size 0.42 :select t :popup t)))
+      '';
+    };
+
     nix-mode.enable = true;
     nix-mode.mode = [ ''"\\.nix\\'"'' ];
 
