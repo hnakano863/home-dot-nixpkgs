@@ -65,6 +65,15 @@ with pkgs;
 
     ivy-rich.enable = true;
     ivy-rich.hook = [ "(ivy-mode . ivy-rich-mode)" ];
+
+    ivy-posframe = {
+      enable = true;
+      hook = [ "(ivy-mode . ivy-posframe-mode)" ];
+      extraConfig = ''
+        :custom
+        (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+      '';
+    };
     
     projectile = {
       enable = true;

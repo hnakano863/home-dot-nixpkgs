@@ -18,6 +18,7 @@ in
       (push '(tool-bar-lines . 0) default-frame-alist)
       (push '(vertical-scroll-bars . nil) default-frame-alist)
       (push '(font . "Cica-14") default-frame-alist)
+      (push '(fullscreen . maximized) initial-frame-alist)
     '';
 
     prelude = ''
