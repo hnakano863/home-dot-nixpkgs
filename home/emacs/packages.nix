@@ -206,7 +206,8 @@ with pkgs;
       config = "(shackle-mode 1)";
       extraConfig = ''
         :custom
-        (shackle-rules '(("*Help*" :align below :size 0.42 :select t :popup t)))
+        (shackle-rules '(("*Help*" :align below :size 0.42 :select t :popup t)
+                         (magit-status-mode :align right :select t :popup t)))
       '';
     };
 
