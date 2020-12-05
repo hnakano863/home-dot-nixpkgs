@@ -13,10 +13,12 @@
   "q" '(:ignore t :wk "quit")
   "g" '(:ignode t :wk "git")
   "t" '(:ignore t :wk "toggle")
-  :keymaps 'projectile-mode-map
-  "p" '(:keymap projectile-command-map :wk "projectile")
-  "e" '(hydra-smartparens-edit/body t :wk "edit"))
-  ;"RET" 'vterm-toggle)
+  "e" '(hydra-smartparens-edit/body t :wk "edit")
+  "RET" 'vterm-toggle)
+
+(my-bind 'projectile-mode-map
+  :prefix "SPC"
+  "p" '(:keymap projectile-command-map :wk "projectile"))
 
 ;; buffer related keybinds
 (my-bind

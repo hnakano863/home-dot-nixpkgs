@@ -198,7 +198,8 @@ with pkgs;
 
     hide-mode-line = {
       enable = true;
-      hook = [ "(help-mode . hide-mode-line-mode)" ];
+      hook = [ "(help-mode . hide-mode-line-mode)"
+               "(vterm-mode . hide-mode-line-mode)" ];
     };
 
     shackle = {
@@ -207,7 +208,21 @@ with pkgs;
       extraConfig = ''
         :custom
         (shackle-rules '(("*Help*" :align below :size 0.42 :select t :popup t)
-                         (magit-status-mode :align right :select t :popup t)))
+                         (magit-status-mode :align right :select t :popup t)
+                         (vterm-mode :align below :size 0.35 :select t :popup t)))
+      '';
+    };
+
+    vterm.enable = true;
+    vterm.defer = true;
+    vterm-toggle = {
+      enable = true;
+      after = [ "evil" ];
+      command = [ "vterm-toggle" ];
+      config = "(evil-set-initial-state 'vterm-mode 'insert)";
+      extraConfig = ''
+        :custom
+        (vterm-toggle-cd-auto-create-buffer t)
       '';
     };
 
