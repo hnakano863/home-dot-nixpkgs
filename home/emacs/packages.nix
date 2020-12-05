@@ -5,9 +5,10 @@ with pkgs;
 
     general.enable = true;
     hydra.enable = true;
+    initchart.enable = true;
+
     restart-emacs.enable = true;
     restart-emacs.command = [ "restart-emacs" ];
-    initchart.enable = true;
 
     git-gutter.enable = true;
     git-gutter.config = "(global-git-gutter-mode t)";
@@ -122,15 +123,15 @@ with pkgs;
         (treemacs-python-executable "${python3}/bin/python")
       '';
     };
+
     treemacs-evil.enable = true;
     treemacs-evil.defer = true;
+
     treemacs-projectile.enable = true;
     treemacs-projectile.defer = true;
+
     treemacs-magit.enable = true;
     treemacs-magit.defer = true;
-
-    smartparens.enable = true;
-    smartparens.config = "(require 'smartparens-config)";
 
     skk = {
       package = "ddskk";
@@ -212,6 +213,7 @@ with pkgs;
 
     vterm.enable = true;
     vterm.defer = true;
+
     vterm-toggle = {
       enable = true;
       after = [ "evil" ];
@@ -222,21 +224,5 @@ with pkgs;
         (vterm-toggle-cd-auto-create-buffer t)
       '';
     };
-
-    company = {
-      enable = true;
-      extraConfig = ''
-        :general
-        (:keymaps 'company-active-map
-          "C-n" 'company-select-next
-          "C-p" 'company-select-previous)
-      '';
-    };
-
-    nix-mode.enable = true;
-    nix-mode.mode = [ ''"\\.nix\\'"'' ];
-
-    fish-mode.enable = true;
-    fish-mode.mode = [ ''"\\.fish\\'"'' ];
   };
 }
