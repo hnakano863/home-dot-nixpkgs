@@ -42,6 +42,12 @@ in
     };
   };
 
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "hnakano863";
