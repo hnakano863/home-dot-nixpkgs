@@ -71,7 +71,7 @@ with pkgs;
       hook = [ "(ivy-mode . ivy-posframe-mode)" ];
       extraConfig = ''
         :custom
-        (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+        (ivy-posframe-display-functions-alist '((swiper . ivy-posframe-display-at-frame-center)))
       '';
     };
     
@@ -129,20 +129,8 @@ with pkgs;
     treemacs-magit.enable = true;
     treemacs-magit.defer = true;
 
-    smartparens = {
-      enable = true;
-      hook = [ "(emacs-lisp-mode . smartparens-mode)" ];
-      config = "(require 'smartparens-config)";
-      extraConfig = ''
-        :general 'visual
-        ("M-(" 'sp-wrap-round)
-        ("M-[" 'sp-wrap-square)
-        ("M-{" 'sp-wrap-curly)
-        ("M-<" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "<")))
-        ("M-'" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "'")))
-        ("M-\"" #'(lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\"")))
-      '';
-    };
+    smartparens.enable = true;
+    smartparens.config = "(require 'smartparens-config)";
 
     skk = {
       package = "ddskk";
@@ -232,6 +220,16 @@ with pkgs;
       extraConfig = ''
         :custom
         (vterm-toggle-cd-auto-create-buffer t)
+      '';
+    };
+
+    company = {
+      enable = true;
+      extraConfig = ''
+        :general
+        (:keymaps 'company-active-map
+          "C-n" 'company-select-next
+          "C-p" 'company-select-previous)
       '';
     };
 

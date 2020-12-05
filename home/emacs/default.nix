@@ -4,9 +4,14 @@ let
   readFile = builtins.readFile;
 in
 {
-  imports = [ ./packages.nix ];
+  imports = [
+    ./packages.nix
+    ./langs
+  ];
+
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
+
   programs.emacs.init = {
     enable = true;
     startupTimer = true;
