@@ -33,5 +33,22 @@
         (lsp-keymap-prefix "C-c l")
       '';
     };
+
+    lsp-ui = {
+      enable = true;
+      hook = [ "(lsp-mode . lsp-ui-mode)" ];
+      extraConfig = ''
+        :custom
+        (lsp-ui-sideline-show-hover t)
+      '';
+    };
+
+    envrc = {
+      enable = true;
+      config = ''
+        (envrc-global-mode 1)
+      '';
+    };
+    
   };
 }
