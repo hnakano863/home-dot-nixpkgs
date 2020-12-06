@@ -8,7 +8,7 @@
 
     flycheck.hook = [ "(rust-mode . flycheck-mode)" ];
     flycheck-rust.enable = true;
-    flycheck-rust.hook = [ "(flycheck-mode . flycheck-rust-setup)" ];
+    flycheck-rust.hook = [ "(rust-mode . flycheck-rust-setup)" ];
 
     lsp-mode.hook = [ "(rust-mode . lsp)" ];
     lsp-mode.extraConfig = ''
