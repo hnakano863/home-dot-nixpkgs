@@ -4,11 +4,17 @@
     ./elisp
     ./nix
     ./fish
+    ./rust
   ];
 
   programs.emacs.init.usePackage = {
     smartparens.enable = true;
     smartparens.config = "(require 'smartparens-config)";
+
+    flycheck.enable = true;
+    flycheck.config = ''
+      (require 'pkg-info)
+    '';
 
     company = {
       enable = true;

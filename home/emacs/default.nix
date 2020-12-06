@@ -32,7 +32,8 @@ in
       (initchart-record-execution-time-of require feature)
       (setq backup-directory-alist `((".*" . ,temporary-file-directory))
             auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
-            auto-save-list-file-prefix nil)
+            auto-save-list-file-prefix nil
+            read-process-output-max (* 3 1024 1024))
       (require 'general)
       (require 'hydra)
     '';
