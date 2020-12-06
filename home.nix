@@ -64,6 +64,13 @@ in
     plugins = with pkgs.vimPlugins; [ vim-nix ];
   };
 
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
