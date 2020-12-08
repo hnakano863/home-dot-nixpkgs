@@ -38,8 +38,11 @@
       '';
       extraConfig = ''
         :custom
-        (lsp-keymap-prefix "C-c l")
+        (lsp-keymap-prefix "C-c C-l")
         (lsp-auto-configure t)
+        :general
+        (:keymaps 'lsp-mode-map
+        "C-c l" '(:keymap lsp-command-map :wk "+lsp"))
       '';
     };
 
