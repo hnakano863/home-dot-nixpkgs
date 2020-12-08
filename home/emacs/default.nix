@@ -34,6 +34,7 @@ in
             auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
             auto-save-list-file-prefix nil
             read-process-output-max (* 3 1024 1024))
+      (blink-cursor-mode -1)
       (require 'general)
       (require 'hydra)
     '';
