@@ -10,7 +10,7 @@
     flycheck-rust.enable = true;
     flycheck-rust.hook = [ "(rust-mode . flycheck-rust-setup)" ];
 
-    lsp-mode.hook = [ "(rust-mode . lsp)" ];
+    lsp-mode.hook = [ "(rust-mode . lsp-deffered)" ];
     lsp-mode.extraConfig = ''
       :custom
       (lsp-rust-rls-server-command "${pkgs.rls}/bin/rls")

@@ -28,25 +28,30 @@
 
     lsp-mode = {
       enable = true;
-      hook = [
-        "(lsp-mode . lsp-enable-which-key-integration)"
-      ];
+      command = [ "lsp" "lsp-deferred" ];
+      hook = [ "(lsp-mode . lsp-enable-which-key-integration)" ];
       config = ''
         (require 'lsp-modeline)
       '';
       extraConfig = ''
         :custom
         (lsp-keymap-prefix "C-c l")
+        (lsp-auto-configure t)
       '';
     };
 
     lsp-ui = {
       enable = true;
-      hook = [ "(lsp-mode . lsp-ui-mode)" ];
+      command = [ "lsp-ui-mode" ];
       extraConfig = ''
         :custom
         (lsp-ui-sideline-show-hover t)
       '';
+    };
+
+    lsp-ivy = {
+      enable = true;
+      command = [ "lsp-ivy-workspace-symbol" ];
     };
 
     envrc = {
@@ -55,6 +60,6 @@
         (envrc-global-mode 1)
       '';
     };
-    
+
   };
 }

@@ -6,7 +6,7 @@
       mode = [ ''"\\.nix\\'"'' ];
     };
 
-    lsp-mode.hook = [ "(nix-mode . lsp)" ];
+    lsp-mode.hook = [ "(nix-mode . lsp-deferred)" ];
     lsp-mode.extraConfig = ''
       :custom
       (lsp-nix-server-path "${pkgs.rnix-lsp}/bin/rnix-lsp")
