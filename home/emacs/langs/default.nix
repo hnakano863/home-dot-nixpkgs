@@ -26,6 +26,9 @@
       '';
     };
 
+    yasnippet.enable = true;
+    yasnippet.defer = true;
+
     lsp-mode = {
       enable = true;
       command = [ "lsp" "lsp-deferred" ];
