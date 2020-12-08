@@ -14,6 +14,10 @@
       "sp-wrap-curly"
       "sp-wrap-with-pair"
     ];
+
+    flycheck.hook = [
+      "(emacs-lisp-mode . flycheck-mode)"
+    ];
   };
 
   programs.emacs.init.postlude = lib.mkAfter ''
