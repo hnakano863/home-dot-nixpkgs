@@ -75,11 +75,13 @@ with pkgs;
         (ivy-posframe-display-functions-alist '((swiper . ivy-posframe-display-at-frame-center)))
       '';
     };
-    
+
     projectile = {
       enable = true;
       extraPackages = [
-        git fd ripgrep
+        git
+        fd
+        ripgrep
       ];
       hook = [ "(ivy-mode . projectile-mode)" ];
       extraConfig = ''
@@ -95,7 +97,7 @@ with pkgs;
       config = "(require 'evil-magit)";
     };
 
-    evil-magit ={
+    evil-magit = {
       enable = true;
       defer = true;
       extraConfig = ''
@@ -177,7 +179,7 @@ with pkgs;
 
     all-the-icons.enable = true;
     all-the-icons.extraPackages = [ emacs-all-the-icons-fonts ];
-    
+
     doom-themes = {
       enable = true;
       config = ''
@@ -196,8 +198,10 @@ with pkgs;
 
     hide-mode-line = {
       enable = true;
-      hook = [ "(help-mode . hide-mode-line-mode)"
-               "(vterm-mode . hide-mode-line-mode)" ];
+      hook = [
+        "(help-mode . hide-mode-line-mode)"
+        "(vterm-mode . hide-mode-line-mode)"
+      ];
     };
 
     shackle = {

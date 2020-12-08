@@ -37,10 +37,10 @@ in
       (require 'general)
       (require 'hydra)
     '';
-    
+
     postlude = ''
       (load "${./hydrae.el}")
       (load "${./keybinds.el}")
-    ''; 
+    '';
   };
 }
