@@ -167,6 +167,7 @@ with pkgs;
 
     my-ivy-migemo = {
       enable = true;
+      # enable = false;
       command = [ "my/ivy--regex-migemo-plus" ];
       extraConfig = ''
         :custom

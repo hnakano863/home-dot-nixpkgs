@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }:
+with pkgs;
 with lib;
 let
   readFile = builtins.readFile;
@@ -11,6 +12,7 @@ in
 
   programs.emacs.enable = true;
   programs.emacs.overrides = import ./overrides { inherit pkgs; };
+  # programs.emacs.package = emacsGcc;
 
   programs.emacs.init = {
     enable = true;
