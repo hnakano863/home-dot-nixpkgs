@@ -8,6 +8,7 @@ in
   imports = [
     ./packages.nix
     ./langs
+    ./org
   ];
 
   programs.emacs.enable = true;
