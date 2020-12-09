@@ -11,5 +11,14 @@
       :custom
       (lsp-nix-server-path "${pkgs.rnix-lsp}/bin/rnix-lsp")
     '';
+
+    company-nixos-options = {
+      enable = true;
+      command = [ "company-nixos-options" ];
+      after = [ "company" ];
+      config = ''
+        (add-to-list 'company-backends 'company-nixos-options)
+      '';
+    };
   };
 }
