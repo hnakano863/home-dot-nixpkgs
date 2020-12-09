@@ -28,18 +28,7 @@ in
       (push '(fullscreen . maximized) initial-frame-alist)
     '';
 
-    prelude = ''
-      (require 'initchart)
-      (initchart-record-execution-time-of load file)
-      (initchart-record-execution-time-of require feature)
-      (setq backup-directory-alist `((".*" . ,temporary-file-directory))
-            auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
-            auto-save-list-file-prefix nil
-            read-process-output-max (* 3 1024 1024))
-      (blink-cursor-mode -1)
-      (require 'general)
-      (require 'hydra)
-    '';
+    prelude = readFile ./prelude.el;
 
     postlude = ''
       (load "${./hydrae.el}")
