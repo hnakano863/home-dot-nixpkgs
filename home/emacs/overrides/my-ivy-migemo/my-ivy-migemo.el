@@ -1,3 +1,8 @@
+;;; package -- my-ivy-migemo
+;;; Commentary:
+;; enable migemo search functionalities in ivy-mode.
+
+;;; Code:
 (require 'ivy)
 (require 'migemo)
 
