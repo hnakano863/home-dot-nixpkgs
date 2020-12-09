@@ -218,6 +218,7 @@ with pkgs;
 
     vterm.enable = true;
     vterm.defer = true;
+    vterm.hook = [ "(vterm-mode . (lambda () (setq-local global-hl-line-mode nil)))" ];
 
     vterm-toggle = {
       enable = true;
