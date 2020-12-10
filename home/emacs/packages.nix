@@ -194,11 +194,37 @@ with pkgs;
       '';
     };
 
-    doom-modeline.enable = true;
-    doom-modeline.config = "(doom-modeline-mode 1)";
+    doom-modeline = {
+      enable = true;
+      config = ''
+        (doom-modeline-def-modeline 'my/main
+          '(bar window-number modals matches major-mode buffer-info " " vcs)
+          '(misc-info process checker repl lsp indent-info buffer-encoding buffer-position "   "))
+
+        (defun doom-modeline-set-my/main-modeline ()
+          (doom-modeline-set-modeline 'my/main t))
+
+        (add-hook 'doom-modeline-mode-hook 'doom-modeline-set-my/main-modeline)
+
+        (doom-modeline-mode 1)
+
+        (defun my/configure-face-attributes ()
+          (progn
+            (set-face-attribute 'mode-line nil :family "Cica" :height 120)
+            (set-face-attribute 'mode-line-inactive nil :family "Cica" :height 120)))
+
+        (add-hook 'after-init-hook 'my/configure-face-attributes)
+      '';
+      extraConfig = ''
+        :custom
+        (all-the-icons-scale-factor 1.1)
+        (doom-modeline-height 1)
+        (doom-modeline-buffer-file-name-style 'truncate-with-project)
+      '';
+    };
 
     hide-mode-line = {
-      enable = true;
+      enable = false;
       hook = [
         "(help-mode . hide-mode-line-mode)"
         "(vterm-mode . hide-mode-line-mode)"
