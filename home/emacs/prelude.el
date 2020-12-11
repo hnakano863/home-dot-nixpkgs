@@ -15,6 +15,11 @@
 (make-variable-buffer-local 'global-hl-line-mode)
 (add-hook 'term-mode-hook (lambda () (setq-local global-hl-line-mode nil)))
 
+;; remove trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; require for configuration
 (require 'general)
 (require 'hydra)
+
+;;; prelude.el ends here.
