@@ -6,15 +6,16 @@
 (my-bind
   :prefix "SPC"
   "" nil
+  "RET" 'vterm-toggle
   "b" '(:ignore t :wk "buffer")
-  "f" '(:ignore t :wk "file")
-  "w" '(:ignore t :wk "window")
-  "h" '(:ignore t :wk "help")
-  "q" '(:ignore t :wk "quit")
-  "g" '(:ignode t :wk "git")
-  "t" '(:ignore t :wk "toggle")
   "e" '(hydra-smartparens-edit/body t :wk "edit")
-  "RET" 'vterm-toggle)
+  "f" '(:ignore t :wk "file")
+  "g" '(:ignode t :wk "git")
+  "h" '(:ignore t :wk "help")
+  "o" '(:ignore t :wk "org")
+  "q" '(:ignore t :wk "quit")
+  "t" '(:ignore t :wk "toggle")
+  "w" '(:ignore t :wk "window"))
 
 (my-bind 'projectile-mode-map
   :prefix "SPC"
