@@ -91,5 +91,12 @@
   :prefix "SPC t"
   "t" 'toggle-truncate-lines
   "l" 'display-line-numbers-mode
-  "f" 'treemacs)
-  ;"v" 'vterm-toggle)
+  "f" 'treemacs
+  "v" 'vterm-toggle)
+
+;; org-mode keybinds
+(my-bind
+  :prefix "SPC o"
+  "c" 'org-capture
+  "n" '((lambda () (interactive) (find-file org-default-notes-file))
+	:wk "open notes"))

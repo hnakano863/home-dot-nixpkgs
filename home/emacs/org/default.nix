@@ -15,6 +15,8 @@ with pkgs;
         (org-hide-emphasis-markers t)
         (org-pretty-entities t)
         (org-fontify-quote-and-verse-blocks t)
+        (org-directory "~/Org")
+        (org-default-notes-file "~/Org/notes.org")
       '';
     };
 
