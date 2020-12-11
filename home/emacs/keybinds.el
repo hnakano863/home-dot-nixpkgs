@@ -31,11 +31,21 @@
   (lisp-interaction-mode)
   (message "switched to *scratch* buffer"))
 
+;;;###autoload
+(defun revert-buffer-no-confirm ()
+  "Revert buffer but no confirm."
+  (interactive)
+  ;;(message "force-reverting value is %s" force-reverting)
+  (if (not (buffer-modified-p))
+      (revert-buffer :ignore-auto :noconfirm)
+      (error "The buffer has been modified")))
+
 (my-bind
   :prefix "SPC b"
   "b" 'ivy-switch-buffer
   "d" 'kill-current-buffer
   "l" 'evil-switch-to-windows-last-buffer
+  "r" 'revert-buffer-no-confirm
   "s" 'switch-to-scratch-buffer)
 
 ;; file related keybinds
