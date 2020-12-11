@@ -198,8 +198,8 @@ with pkgs;
       enable = true;
       config = ''
         (doom-modeline-def-modeline 'my/main
-          '(bar window-number modals matches major-mode buffer-info " " vcs)
-          '(misc-info process checker repl lsp indent-info buffer-encoding buffer-position "   "))
+          '(bar window-number parrot matches buffer-info " " buffer-position)
+          '(misc-info process checker repl lsp vcs indent-info buffer-encoding "   "))
 
         (defun doom-modeline-set-my/main-modeline ()
           (doom-modeline-set-modeline 'my/main t))
@@ -219,9 +219,22 @@ with pkgs;
         :custom
         (all-the-icons-scale-factor 1.1)
         (doom-modeline-height 1)
+        (doom-modeline-bar-width 3)
         (doom-modeline-buffer-file-name-style 'truncate-with-project)
       '';
     };
+
+    parrot = {
+      enable = true;
+      config = "(parrot-mode 1)";
+      extraConfig = ''
+        :custom
+        (parrot-num-rotations nil)
+      '';
+    };
+
+    nyan-mode.enable = true;
+    nyan-mode.config = "(nyan-mode 1)";
 
     hide-mode-line = {
       enable = false;
