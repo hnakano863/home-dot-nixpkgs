@@ -22,11 +22,21 @@
   "p" '(:keymap projectile-command-map :wk "projectile"))
 
 ;; buffer related keybinds
+
+;;;###autoload
+(defun switch-to-scratch-buffer ()
+  "Switch or create *scratch* buffer."
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode)
+  (message "switched to *scratch* buffer"))
+
 (my-bind
   :prefix "SPC b"
   "b" 'ivy-switch-buffer
   "d" 'kill-current-buffer
-  "l" 'evil-switch-to-windows-last-buffer)
+  "l" 'evil-switch-to-windows-last-buffer
+  "s" 'switch-to-scratch-buffer)
 
 ;; file related keybinds
 (my-bind
