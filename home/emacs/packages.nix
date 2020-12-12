@@ -244,6 +244,9 @@ with pkgs;
       ];
     };
 
+    mode-line-bell.enable = true;
+    mode-line-bell.config = "(mode-line-bell-mode 1)";
+
     shackle = {
       enable = true;
       config = "(shackle-mode 1)";
