@@ -19,8 +19,16 @@ with pkgs;
       '';
     };
 
-    org-journal.enable = true;
-    org-journal.command = [ "org-journal-new-entry" ];
+    org-journal = {
+      enable = true;
+      command = [ "org-journal-new-entry" ];
+      extraConfig = ''
+        :custom
+        (org-journal-file-type 'weekly)
+        (org-journal-file-format "%Y-%m-%d")
+        (org-journal-dir (concat "~/Org/journal/" (format-time-string "%Y" (current-time))))
+      '';
+    };
 
     smartparens.hook = [ "(org-mode . smartparens-mode)" ];
   };

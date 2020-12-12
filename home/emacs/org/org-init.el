@@ -49,11 +49,14 @@
         ("n" "Note" entry (file+headline org-default-notes-file "Notes")
          "* %?\n:PROPERTIES:\n:Entered:  %U\n:END:\n%i\n")))
 
-;; setup for org-journal
-(setq org-journal-dir (concat org-directory
-			      "/journal/"
-			      (format-time-string "%Y" (current-time)))
-      org-journal-file-type 'weekly
-      org-journal-file-format "%Y-%m-%d")
+;; setup for latex
+(setq org-latex-packages-alist '(("" "physics" t))
+      org-format-latex-options '(:foreground default
+					     :background default
+					     :scale 1.6
+					     :html-foreground "Black"
+					     :html-background "Transparent"
+					     :html-scale 1.6
+					     :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 ;;; org-init.el ends here.

@@ -24,6 +24,7 @@ in
     bat
     gimp
     julia-bin
+    texlive.combined.scheme-medium
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
