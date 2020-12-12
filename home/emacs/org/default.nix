@@ -40,7 +40,7 @@ with pkgs;
         (org-pomodoro-play-sounds nil)
       '';
       hook = [
-        "(org-pomodoro-started . parrot-stop-animation)"
+        "(org-pomodoro-started . parrot-start-animation)"
         "(org-pomodoro-finished . parrot-start-animation)"
       ];
     };

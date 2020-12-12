@@ -229,7 +229,7 @@ with pkgs;
       config = "(parrot-mode 1)";
       extraConfig = ''
         :custom
-        (parrot-num-rotations nil)
+        (parrot-num-rotations 10)
       '';
     };
 
