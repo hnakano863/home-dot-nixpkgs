@@ -54,7 +54,7 @@
  "f" 'counsel-find-file
  "r" 'counsel-recentf
  "t" 'treemacs)
-		 
+
 ;; window related keybinds
 (my-bind
   :prefix "SPC w"
@@ -119,4 +119,6 @@
   :prefix "SPC o"
   "c" 'org-capture
   "n" '((lambda () (interactive) (find-file org-default-notes-file))
-	:wk "open notes"))
+	:wk "open notes")
+  "a" 'org-agenda
+  "j" 'org-journal-new-entry)

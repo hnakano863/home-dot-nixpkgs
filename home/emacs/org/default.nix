@@ -18,7 +18,9 @@ with pkgs;
         (org-bullets-bullet-list '("✿" "◉" "✸" "○"))
       '';
     };
-    
+
+    org-journal.enable = true;
+    org-journal.command = [ "org-journal-new-entry" ];
 
     smartparens.hook = [ "(org-mode . smartparens-mode)" ];
   };

@@ -16,9 +16,16 @@
       org-pretty-entities t
       org-fontify-quote-and-verse-blocks t)
 
-;; setup for directory
+;; setup for files and directories
 (setq org-directory "~/Org"
-      org-default-notes-file "~/Org/notes.org")
+      org-agenda-files '("~/Org/notes.org"
+			 "~/Org/knowledge/org-mode.org")
+      org-refile-targets '((org-agenda-files :maxlevel . 1))
+      org-default-notes-file "~/Org/notes.org"
+      org-archive-location (concat org-directory
+				   "/archives/%s_archive_"
+				   (format-time-string "%Y" (current-time))
+				   "::"))
 
 ;; setup for org-todo
 (setq org-todo-keywords
@@ -38,8 +45,15 @@
 ;; setup for org-capture template
 (setq org-capture-templates
       '(("t" "Task" entry (file+headline org-default-notes-file "Tasks")
-         "* TODO %?\n Entered at %U\n %i\n")
+         "* TODO %?\n:PROPERTIES:\n:Entered:  %U\n:END:\n%i\n")
         ("n" "Note" entry (file+headline org-default-notes-file "Notes")
-         "* %?\n Entered at %U\n %i\n")))
+         "* %?\n:PROPERTIES:\n:Entered:  %U\n:END:\n%i\n")))
+
+;; setup for org-journal
+(setq org-journal-dir (concat org-directory
+			      "/journal/"
+			      (format-time-string "%Y" (current-time)))
+      org-journal-file-type 'weekly
+      org-journal-file-format "%Y-%m-%d")
 
 ;;; org-init.el ends here.
