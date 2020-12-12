@@ -30,6 +30,21 @@ with pkgs;
       '';
     };
 
+    org-pomodoro = {
+      enable = true;
+      command = [ "org-pomodoro" ];
+      extraConfig = ''
+        :custom
+        (org-pomodoro-format "🍅~%s")
+        (org-pomodoro-length 20)
+        (org-pomodoro-play-sounds nil)
+      '';
+      hook = [
+        "(org-pomodoro-started . parrot-stop-animation)"
+        "(org-pomodoro-finished . parrot-start-animation)"
+      ];
+    };
+
     smartparens.hook = [ "(org-mode . smartparens-mode)" ];
   };
 }
