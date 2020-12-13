@@ -19,7 +19,7 @@
 ;; setup for files and directories
 (setq org-directory "~/Org"
       org-agenda-files '("~/Org/notes.org"
-			 "~/Org/knowledge/org-mode.org")
+			 "~/Org/knowledge")
       org-refile-targets '((org-agenda-files :maxlevel . 1))
       org-default-notes-file "~/Org/notes.org"
       org-archive-location (concat org-directory
