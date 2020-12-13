@@ -60,6 +60,15 @@ with pkgs;
       '';
     };
 
+    evil-org = {
+      enable = true;
+      hook = [
+        "(org-mode . evil-org-mode)"
+        "(evil-org-mode . evil-org-set-key-theme)"
+        "(org-agenda-mode . (lambda () (require 'evil-org-agenda) (evil-org-agenda-set-keys)))"
+      ];
+    };
+
     smartparens.hook = [ "(org-mode . smartparens-mode)" ];
   };
 }
