@@ -88,6 +88,8 @@ with pkgs;
         :custom
         (projectile-indexing-method 'alien)
         (projectile-sort-order 'recentf-active)
+        (projectile-enable-caching t)
+        (projectile-project-search-path '("~/repos/" "~/.config/" "~/experiments/"))
       '';
     };
 
