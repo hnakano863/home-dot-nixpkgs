@@ -42,7 +42,22 @@ with pkgs;
       hook = [
         "(org-pomodoro-started . parrot-start-animation)"
         "(org-pomodoro-finished . parrot-start-animation)"
+        "(org-pomodoro-break-finished . parrot-start-animation)"
       ];
+    };
+
+    org-projectile = {
+      enable = true;
+      command = [ "org-projectile-project-todo-completing-read" ];
+      config = ''
+        (org-projectile-per-project)
+        (setq org-agenda-files
+              (append org-agenda-files (org-projectile-todo-files)))
+      '';
+      extraConfig = ''
+        :custom
+        (org-projectile-per-project-filepath "todos.org")
+      '';
     };
 
     smartparens.hook = [ "(org-mode . smartparens-mode)" ];

@@ -121,4 +121,5 @@
   "n" '((lambda () (interactive) (find-file org-default-notes-file))
 	:wk "open notes")
   "a" 'org-agenda
-  "j" 'org-journal-new-entry)
+  "j" 'org-journal-new-entry
+  "p" '(org-projectile-project-todo-completing-read :wk "project todo"))
