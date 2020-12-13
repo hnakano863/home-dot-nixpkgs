@@ -6,6 +6,7 @@ in
   imports = [
     nur-no-pkgs.repos.rycee.hmModules.emacs-init
     ./home/emacs
+    ./home/julia
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -23,7 +24,6 @@ in
     ripgrep
     bat
     gimp
-    julia-bin
     texlive.combined.scheme-medium
   ];
 

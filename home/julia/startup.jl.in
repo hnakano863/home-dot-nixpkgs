@@ -1,0 +1,1 @@
+ENV["JUPYTER"] = "@pythonWithJupyter@/bin/jupyter"
