@@ -33,6 +33,8 @@ with pkgs;
       '';
       extraConfig = ''
         :custom
+        (evil-want-keybinding nil)
+        (evil-want-integration t)
         (evil-want-C-u-scroll t)
         (evil-undo-system 'undo-fu)
       '';
@@ -273,6 +275,16 @@ with pkgs;
         :custom
         (vterm-toggle-cd-auto-create-buffer t)
       '';
+    };
+
+    pdf-tools = {
+      enable = true;
+      mode = [ ''("\\.pdf\\'" . pdf-view-mode)'' ];
+    };
+
+    evil-collection = {
+      enable = true;
+      hook = [ "(pdf-view-mode . evil-collection-pdf-setup)" ];
     };
   };
 }

@@ -59,4 +59,7 @@
 					     :html-scale 1.6
 					     :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
+;; setup for org-babel
+(setq org-confirm-babel-evaluate nil)
+
 ;;; org-init.el ends here.
