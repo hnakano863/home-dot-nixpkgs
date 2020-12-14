@@ -5,6 +5,7 @@
     ./nix
     ./fish
     ./rust
+    ./jupyter
   ];
 
   programs.emacs.init.usePackage = {
