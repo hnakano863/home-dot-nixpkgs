@@ -20,5 +20,15 @@ in
         (advice-add 'jupyter-command :around #'my/jupyter-command-advice)
       '';
     };
+
+    ein-jupyter = {
+      enable = true;
+      package = "ein";
+      command = [ "ein:run" ];
+      extraConfig = ''
+        :custom
+        (ein:jupyter-server-command "${pyWithJupyter}/bin/jupyter")
+      '';
+    };
   };
 }
