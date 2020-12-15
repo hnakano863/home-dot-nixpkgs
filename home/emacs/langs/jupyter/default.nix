@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 with pkgs;
 with lib;
-let
-  pyWithJupyter = python38.withPackages (p: [ p.notebook ]);
-in
 {
   programs.emacs.init.usePackage = {
     jupyter = {
@@ -14,9 +11,22 @@ in
       ];
       extraConfig = ''
         :custom
-        (jupyter-executable "${pyWithJupyter}/bin/jupyter")
+        (jupyter-executable "${pythonWithJupyter}/bin/jupyter")
       '';
       init = readFile ./jupyter-init.el;
+    };
+
+    ob-jupyter = {
+      enable = true;
+      defer = true;
+      package = "jupyter";
+      extraConfig = ''
+        :custom
+        (org-babel-default-header-args:jupyter-julia '((:kernel . "julia-1.5")
+                                                       (:session . "jl")))
+        (org-babel-default-header-args:jupyter-python '((:kernel . "python3")
+                                                        (:session . "py")))
+      '';
     };
 
     ein-jupyter = {
@@ -25,7 +35,7 @@ in
       command = [ "ein:run" ];
       extraConfig = ''
         :custom
-        (ein:jupyter-server-command "${pyWithJupyter}/bin/jupyter")
+        (ein:jupyter-server-command "${pythonWithJupyter}/bin/jupyter")
       '';
     };
   };

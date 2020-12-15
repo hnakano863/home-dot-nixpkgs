@@ -2,7 +2,6 @@
 with pkgs;
 with lib;
 let
-  pythonWithJupyter = python38.withPackages (p: [ p.notebook ]);
   startup-jl = runCommand "startup.jl" { inherit pythonWithJupyter; } ''
     substituteAll "${./startup.jl.in}" $out
   '';
