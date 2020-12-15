@@ -77,6 +77,9 @@ with pkgs;
       ];
     };
 
+    org-eldoc.enable = true;
+    org-eldoc.hook = [ "(org-mode . org-eldoc-load)" ];
+
     smartparens.hook = [ "(org-mode . smartparens-mode)" ];
   };
 }
