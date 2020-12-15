@@ -5,7 +5,7 @@ with pkgs;
   programs.emacs.init.usePackage = {
     org-mode = {
       enable = true;
-      package = "org";
+      package = "org-plus-contrib";
       mode = [ ''"\\.org\\'"'' ];
       init = readFile ./org-init.el;
       config = ''
