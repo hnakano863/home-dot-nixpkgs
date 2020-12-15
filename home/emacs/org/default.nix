@@ -8,6 +8,14 @@ with pkgs;
       package = "org";
       mode = [ ''"\\.org\\'"'' ];
       init = readFile ./org-init.el;
+      config = ''
+        (org-babel-do-load-languages
+          'org-babel-load-languages
+          '((emacs-lisp . t)
+            (python . t)
+            (julia . t)
+            (jupyter . t)))
+      '';
     };
 
     org-bullets = {
