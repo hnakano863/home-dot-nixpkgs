@@ -5,7 +5,9 @@
 
 (defun my/org-babel-execute-src-block-advice (&optional arg info params)
   (unless (featurep 'ob-jupyter)
-    (require 'ob-jupyter)))
+    (let ((lang (org-eldoc-get-src-lang)))
+      (when (string-prefix-p "jupyter-" lang)
+	  (require 'ob-jupyter)))))
 
 (advice-add 'jupyter-command :around #'my/jupyter-command-advice)
 (advice-add 'org-babel-execute-src-block :before #'my/org-babel-execute-src-block-advice)
