@@ -9,7 +9,6 @@ with lib;
         "jupyter-run-repl"
         "jupyter-available-kernelspecs"
       ];
-      hook = [ "(org-mode . jupyter-org-interaction-mode)" ];
       extraConfig = ''
         :custom
         (jupyter-executable "${pythonWithJupyter}/bin/jupyter")

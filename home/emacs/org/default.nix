@@ -8,15 +8,7 @@ with pkgs;
       package = "org-plus-contrib";
       mode = [ ''"\\.org\\'"'' ];
       init = readFile ./org-init.el;
-      config = ''
-        (org-babel-do-load-languages
-          'org-babel-load-languages
-          '((emacs-lisp . t)
-            (shell . t)
-            (python . t)
-            (julia . t)
-            (jupyter . t)))
-      '';
+      config = readFile ./org-config.el;
     };
 
     org-bullets = {

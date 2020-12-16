@@ -7,7 +7,8 @@
   (unless (featurep 'ob-jupyter)
     (let ((lang (org-eldoc-get-src-lang)))
       (when (string-prefix-p "jupyter-" lang)
-	  (require 'ob-jupyter nil t)))))
+	(require 'ob-jupyter nil t)
+	(jupyter-org-interaction-mode 1)))))
 
 (advice-add 'jupyter-command :around #'my/jupyter-command-advice)
 (advice-add 'org-babel-execute-src-block :before #'my/org-babel-execute-src-block-advice)

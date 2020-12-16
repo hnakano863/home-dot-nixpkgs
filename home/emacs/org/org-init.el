@@ -62,7 +62,7 @@
 ;; setup for org-babel
 (setq org-confirm-babel-evaluate nil
       org-src-fontify-natively t
-      org-src-tab-acts-natively t
-      org-edit-content-indentation 0)
+      org-src-preserve-indentation t
+      org-src-tab-acts-natively t)
 
 ;;; org-init.el ends here.
