@@ -2,10 +2,12 @@
 {
   imports = [
     ./elisp
-    ./nix
     ./fish
-    ./rust
+    ./julia
     ./jupyter
+    ./nix
+    ./python
+    ./rust
   ];
 
   programs.emacs.init.usePackage = {

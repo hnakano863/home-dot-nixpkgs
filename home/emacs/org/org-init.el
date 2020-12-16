@@ -60,6 +60,9 @@
 					     :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 ;; setup for org-babel
-(setq org-confirm-babel-evaluate nil)
+(setq org-confirm-babel-evaluate nil
+      org-src-fontify-natively t
+      org-src-tab-acts-natively t
+      org-edit-content-indentation 0)
 
 ;;; org-init.el ends here.
