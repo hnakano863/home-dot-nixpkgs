@@ -3,10 +3,10 @@ with lib;
 with pkgs;
 {
   programs.emacs.init.usePackage = {
-    org-mode = {
+    org = {
       enable = true;
       package = "org-plus-contrib";
-      mode = [ ''"\\.org\\'"'' ];
+      mode = [ ''("\\.org\\'" . org-mode)'' ];
       init = readFile ./org-init.el;
       config = readFile ./org-config.el;
     };

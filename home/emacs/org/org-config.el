@@ -1,4 +1,4 @@
-;;; org-init.el --- org-mode config after package loading.
+;;; org-config.el --- org-mode config after package loading.
 
 ;;; Commentary:
 ;;; This file is for configuration about org-mode.
@@ -11,7 +11,7 @@
     (org-babel-do-in-edit-buffer
      (call-interactively #'indent-for-tab-command))))
 
-(advice-add 'org-return :after #'doom/org-fix-newline-and-indent-in-src-blocks-a)
+(advice-add 'org-return :after #'doom/org-fix-newline-and-indent-in-src-blocks)
 (add-hook 'org-tab-first-hook #'doom/org-fix-newline-and-indent-in-src-blocks)
 
 (org-babel-do-load-languages
@@ -21,3 +21,5 @@
    (python . t)
    (julia . t)
    (jupyter . t)))
+
+;;; org-config.el ends here.

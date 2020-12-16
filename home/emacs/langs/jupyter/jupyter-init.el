@@ -3,12 +3,4 @@
     (when (zerop (apply #'process-file jupyter-executable nil t nil args))
       (string-trim-right (buffer-string)))))
 
-(defun my/org-babel-execute-src-block-advice (&optional arg info params)
-  (unless (featurep 'ob-jupyter)
-    (let ((lang (org-eldoc-get-src-lang)))
-      (when (string-prefix-p "jupyter-" lang)
-	(require 'ob-jupyter nil t)
-	(jupyter-org-interaction-mode 1)))))
-
 (advice-add 'jupyter-command :around #'my/jupyter-command-advice)
-(advice-add 'org-babel-execute-src-block :before #'my/org-babel-execute-src-block-advice)
