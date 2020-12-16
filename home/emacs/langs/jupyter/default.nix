@@ -9,6 +9,7 @@ with lib;
         "jupyter-run-repl"
         "jupyter-available-kernelspecs"
       ];
+      hook = [ "(org-mode . jupyter-org-interaction-mode)" ];
       extraConfig = ''
         :custom
         (jupyter-executable "${pythonWithJupyter}/bin/jupyter")
@@ -23,10 +24,18 @@ with lib;
       extraConfig = ''
         :custom
         (org-babel-default-header-args:jupyter-julia '((:kernel . "julia-1.5")
-                                                       (:session . "jl")))
+                                                       (:session . "jl")
+                                                       (:async . "yes")))
         (org-babel-default-header-args:jupyter-python '((:kernel . "python3")
-                                                        (:session . "py")))
+                                                        (:session . "py")
+                                                        (:async . "yes")))
       '';
+    };
+
+    jupyter-tramp = {
+      enable = true;
+      package = "jupyter";
+      command = [ "jupyter-tramp-file-name-p" ];
     };
 
     ein-jupyter = {

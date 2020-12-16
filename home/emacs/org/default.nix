@@ -12,6 +12,7 @@ with pkgs;
         (org-babel-do-load-languages
           'org-babel-load-languages
           '((emacs-lisp . t)
+            (shell . t)
             (python . t)
             (julia . t)
             (jupyter . t)))
