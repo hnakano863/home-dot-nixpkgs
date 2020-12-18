@@ -22,4 +22,7 @@
 (require 'general)
 (require 'hydra)
 
+;; recentf-mode
+(add-hook 'emacs-startup-hook '(lambda () (recentf-mode +1)))
+
 ;;; prelude.el ends here.

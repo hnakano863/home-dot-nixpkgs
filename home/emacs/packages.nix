@@ -3,6 +3,8 @@ with pkgs;
 {
   programs.emacs.init.usePackage = {
 
+    leaf.enable = true;
+    macrostep.enable = true;
     general.enable = true;
     hydra.enable = true;
     initchart.enable = true;
@@ -40,43 +42,32 @@ with pkgs;
       '';
     };
 
-    counsel = {
+    selectrum = {
       enable = true;
-      command = [
-        "counsel-recentf"
-      ];
       config = ''
-        (ivy-mode 1)
-      '';
-      extraConfig = ''
-        :custom
-        (ivy-hight 15)
-        (ivy-use-virtual-buffers t)
-        :general
-        ("C-s" 'swiper)
-        ("M-x" 'counsel-M-x)
-        ("C-x C-f" 'counsel-find-file)
-        ("M-y" 'counsel-yank-pop)
-        ("C-h f" 'counsel-describe-function)
-        ("C-h v" 'counsel-describe-variable)
-        ("C-x b" 'ivy-switch-buffer)
+        (selectrum-mode +1)
       '';
     };
 
-    ivy-prescient.enable = true;
-    ivy-prescient.hook = [ "(ivy-mode . ivy-prescient-mode)" ];
-
-    ivy-rich.enable = true;
-    ivy-rich.hook = [ "(ivy-mode . ivy-rich-mode)" ];
-
-    ivy-posframe = {
+    selectrum-prescient = {
       enable = true;
-      hook = [ "(ivy-mode . ivy-posframe-mode)" ];
-      extraConfig = ''
-        :custom
-        (ivy-posframe-display-functions-alist '((swiper . ivy-posframe-display-at-frame-center)))
+      config = ''
+        (selectrum-prescient-mode +1)
+        (prescient-persist-mode +1)
       '';
     };
+
+    consult = {
+      enable = true;
+      extraConfig = ''
+        :general
+        ("C-s" 'consult-line)
+        ("C-h a" 'consult-apropos)
+      '';
+    };
+
+    consult-selectrum.enable = true;
+    consult-selectrum.package = "consult";
 
     projectile = {
       enable = true;
@@ -85,7 +76,7 @@ with pkgs;
         fd
         ripgrep
       ];
-      hook = [ "(ivy-mode . projectile-mode)" ];
+      hook = [ "(selectrum-mode . projectile-mode)" ];
       extraConfig = ''
         :custom
         (projectile-indexing-method 'alien)
@@ -157,7 +148,7 @@ with pkgs;
     ddskk-posframe.hook = [ "(skk-mode . ddskk-posframe-mode)" ];
 
     migemo = with pkgs; {
-      enable = true;
+      enable = false;
       defer = true;
       extraConfig = ''
         :custom
@@ -170,7 +161,7 @@ with pkgs;
     };
 
     my-ivy-migemo = {
-      enable = true;
+      enable = false;
       # enable = false;
       command = [ "my/ivy--regex-migemo-plus" ];
       extraConfig = ''

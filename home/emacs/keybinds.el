@@ -7,6 +7,7 @@
   :prefix "SPC"
   "" nil
   "RET" 'vterm-toggle
+  "SPC" 'consult-buffer
   "b" '(:ignore t :wk "buffer")
   "e" '(hydra-smartparens-edit/body t :wk "edit")
   "f" '(:ignore t :wk "file")
@@ -42,7 +43,7 @@
 
 (my-bind
   :prefix "SPC b"
-  "b" 'ivy-switch-buffer
+  "b" 'switch-to-buffer
   "d" 'kill-current-buffer
   "l" 'evil-switch-to-windows-last-buffer
   "r" 'revert-buffer-no-confirm
@@ -51,8 +52,8 @@
 ;; file related keybinds
 (my-bind
  :prefix "SPC f"
- "f" 'counsel-find-file
- "r" 'counsel-recentf
+ "f" 'find-file
+ "r" 'consult-recent-file
  "t" 'treemacs)
 
 ;; window related keybinds
@@ -85,8 +86,8 @@
 ;; help related keybinds
 (my-bind
   :prefix "SPC h"
-  "f" 'counsel-describe-function
-  "v" 'counsel-describe-variable
+  "f" 'describe-function
+  "v" 'describe-variable
   "k" 'describe-key
   "m" 'describe-mode)
 
