@@ -58,11 +58,6 @@
       '';
     };
 
-    lsp-ivy = {
-      enable = true;
-      command = [ "lsp-ivy-workspace-symbol" ];
-    };
-
     envrc = {
       enable = true;
       config = ''
