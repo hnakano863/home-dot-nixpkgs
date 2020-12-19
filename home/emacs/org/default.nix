@@ -74,5 +74,8 @@ with pkgs;
     org-eldoc.hook = [ "(org-mode . org-eldoc-load)" ];
 
     smartparens.hook = [ "(org-mode . smartparens-mode)" ];
+    smartparens.config = mkAfter ''
+      (sp-local-pair 'org-mode "\\[" "\\]")
+    '';
   };
 }
