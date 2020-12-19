@@ -86,6 +86,7 @@
 ;; help related keybinds
 (my-bind
   :prefix "SPC h"
+  "a" 'consult-apropos
   "f" 'describe-function
   "v" 'describe-variable
   "k" 'describe-key

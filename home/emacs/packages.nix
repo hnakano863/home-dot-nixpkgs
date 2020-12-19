@@ -58,15 +58,16 @@ with pkgs;
 
     consult = {
       enable = true;
+      command = [
+        "consult-buffer"
+      ];
       extraConfig = ''
         :general
         ("C-s" 'consult-line)
         ("C-h a" 'consult-apropos)
       '';
+      hook = [ "(selectrum-mode . (lambda () (require 'consult-selectrum)))" ];
     };
-
-    consult-selectrum.enable = true;
-    consult-selectrum.package = "consult";
 
     projectile = {
       enable = true;
@@ -145,32 +146,6 @@ with pkgs;
     posframe.defer = true;
     ddskk-posframe.enable = true;
     ddskk-posframe.hook = [ "(skk-mode . ddskk-posframe-mode)" ];
-
-    migemo = with pkgs; {
-      enable = false;
-      defer = true;
-      extraConfig = ''
-        :custom
-        (migemo-options '("-q" "--emacs"))
-        (migemo-user-dictionary nil)
-        (migemo-regex-dictionary nil)
-        (migemo-command "${cmigemo}/bin/cmigemo")
-        (migemo-dictionary "${cmigemo}/share/migemo/utf-8/migemo-dict")
-      '';
-    };
-
-    my-ivy-migemo = {
-      enable = false;
-      # enable = false;
-      command = [ "my/ivy--regex-migemo-plus" ];
-      extraConfig = ''
-        :custom
-        (ivy-re-builders-alist '((counsel-find-file . my/ivy--regex-migemo-plus)
-                                 (counsel-recentf . my/ivy--regex-migemo-plus)
-                                 (swiper . my/ivy--regex-migemo-plus)
-                                 (t . ivy--regex-plus)))
-      '';
-    };
 
     all-the-icons.enable = true;
     all-the-icons.extraPackages = [ emacs-all-the-icons-fonts ];
