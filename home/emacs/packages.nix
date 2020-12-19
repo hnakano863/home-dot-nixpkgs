@@ -3,7 +3,6 @@ with pkgs;
 {
   programs.emacs.init.usePackage = {
 
-    leaf.enable = true;
     macrostep.enable = true;
     general.enable = true;
     hydra.enable = true;
