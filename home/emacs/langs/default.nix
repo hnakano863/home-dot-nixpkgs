@@ -7,6 +7,7 @@
     ./jupyter
     ./nix
     ./python
+    ./restclient
     ./rust
   ];
 

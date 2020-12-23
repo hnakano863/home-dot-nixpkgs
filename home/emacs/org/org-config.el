@@ -20,6 +20,7 @@
    (shell . t)
    (python . t)
    (julia . t)
-   (jupyter . t)))
+   (jupyter . t)
+   (restclient . t)))
 
 ;;; org-config.el ends here.
