@@ -2,7 +2,7 @@
 with pkgs;
 with lib;
 let
-  startup-jl = runCommand "startup.jl" { inherit pythonWithJupyter; } ''
+  startup-jl = runCommand "startup.jl" { inherit jupyterCmdFHS; } ''
     substituteAll "${./startup.jl.in}" $out
   '';
 in

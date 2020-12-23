@@ -11,7 +11,7 @@ with lib;
       ];
       extraConfig = ''
         :custom
-        (jupyter-executable "${pythonWithJupyter}/bin/jupyter")
+        (jupyter-executable "${jupyterCmdFHS}/bin/jupyter-command")
       '';
       init = readFile ./jupyter-init.el;
     };
@@ -43,7 +43,7 @@ with lib;
       command = [ "ein:run" ];
       extraConfig = ''
         :custom
-        (ein:jupyter-server-command "${pythonWithJupyter}/bin/jupyter")
+        (ein:jupyter-server-command "${jupyterCmdFHS}/bin/jupyter-command")
       '';
     };
   };

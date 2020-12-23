@@ -1,1 +1,1 @@
-ENV["JUPYTER"] = "@pythonWithJupyter@/bin/jupyter"
+ENV["JUPYTER"] = "@jupyterCmdFHS@/bin/jupyter-command"
