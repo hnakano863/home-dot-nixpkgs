@@ -1,5 +1,4 @@
 { stdenv
-, glibc
 , autoPatchelfHook
 , version
 , sha256
@@ -14,10 +13,11 @@ stdenv.mkDerivation rec {
     inherit sha256;
   };
 
-  buildInputs = [ glibc ];
+  dontStrip = true;
   nativeBuildInputs = [ autoPatchelfHook ];
   installPhase = ''
     mkdir -p $out
-    cp -a $src/* $out
+    rm lib/julia/libccalltest.so.debug
+    cp -a * $out
   '';
 }

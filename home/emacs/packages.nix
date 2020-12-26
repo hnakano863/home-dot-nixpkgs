@@ -66,7 +66,11 @@ with pkgs;
         ("C-s" 'consult-line)
         ("C-h a" 'consult-apropos)
       '';
-      hook = [ "(selectrum-mode . (lambda () (require 'consult-selectrum)))" ];
+    };
+
+    consult-selectrum = {
+      enable = true;
+      hook = [ "(consult-mode . (lambda () (require 'consult-selectrum)))" ];
     };
 
     projectile = {

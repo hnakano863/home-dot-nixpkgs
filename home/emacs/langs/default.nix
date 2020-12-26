@@ -50,6 +50,12 @@
       '';
     };
 
+    lsp-headerline = {
+      enable = true;
+      package = "lsp-mode";
+      command = [ "lsp-headerline-breadcrumb-mode" ];
+    };
+
     lsp-ui = {
       enable = true;
       command = [ "lsp-ui-mode" ];

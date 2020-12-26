@@ -10,6 +10,11 @@ let
         ];
       }
     );
+    notebook = pysuper.notebook.overridePythonAttrs (
+      old: {
+        doCheck = false;
+      }
+    );
   };
 
   customPython = super.python3.override {
