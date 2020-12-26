@@ -8,7 +8,8 @@
 
 ;; startup setup
 (setq org-startup-indented t
-      org-startup-folded nil)
+      org-startup-folded nil
+      org-startup-with-inline-images t)
 
 ;; setup for appearance
 (setq org-indent-indentation-per-level 1

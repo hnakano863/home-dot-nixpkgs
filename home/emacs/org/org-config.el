@@ -13,11 +13,13 @@
 
 (advice-add 'org-return :after #'doom/org-fix-newline-and-indent-in-src-blocks)
 (add-hook 'org-tab-first-hook #'doom/org-fix-newline-and-indent-in-src-blocks)
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
    (shell . t)
+   (gnuplot . t)
    (python . t)
    (julia . t)
    (jupyter . t)

@@ -10,5 +10,10 @@ with pkgs;
       '';
       mode = [ ''("\\.gp\\'" . gnuplot-mode)'' ];
     };
+
+    org-babel-gnuplot = {
+      enable = true;
+      defer = true;
+    };
   };
 }
