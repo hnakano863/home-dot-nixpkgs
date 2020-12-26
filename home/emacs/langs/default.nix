@@ -3,6 +3,7 @@
   imports = [
     ./elisp
     ./fish
+    ./gnuplot
     ./julia
     ./jupyter
     ./nix
