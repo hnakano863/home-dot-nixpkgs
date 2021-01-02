@@ -77,5 +77,16 @@ with pkgs;
     smartparens.config = mkAfter ''
       (sp-local-pair 'org-mode "\\[" "\\]")
     '';
+
+    org-roam = {
+      enable = true;
+      command = [ "org-roam-mode" ];
+      extraConfig = ''
+        :custom
+        (org-roam-directory "~/Org/roam/")
+        (emacsql-sqlite3-executable "${pkgs.sqlite}/bin/sqlite3")
+        (org-roam-graph-executable "${pkgs.graphviz}/bin/dot")
+      '';
+    };
   };
 }
