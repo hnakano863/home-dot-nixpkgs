@@ -255,5 +255,8 @@ with pkgs;
       enable = true;
       hook = [ "(pdf-view-mode . evil-collection-pdf-setup)" ];
     };
+
+    ebib.enable = true;
+    ebib.command = [ "ebib" ];
   };
 }
