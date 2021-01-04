@@ -124,4 +124,10 @@
 	:wk "open notes")
   "a" 'org-agenda
   "j" 'org-journal-new-entry
-  "p" '(org-projectile-project-todo-completing-read :wk "project todo"))
+  "p" '(org-projectile-project-todo-completing-read :wk "project todo")
+  "f" 'org-roam-find-file
+  "i" 'org-roam-insert
+  "I" 'org-roam-insert-immediate
+  "t" 'org-roam-tag-add
+  "r" 'org-roam
+  "g" 'org-roam-graph)
