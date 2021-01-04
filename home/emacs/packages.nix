@@ -18,6 +18,9 @@ with pkgs;
     undo-fu-session.enable = true;
     undo-fu-session.config = "(global-undo-fu-session-mode 1)";
 
+    undo-tree.enable = true;
+    undo-tree.command = [ "undo-tree-visualize" ];
+
     winum.enable = true;
     winum.config = "(winum-mode)";
 

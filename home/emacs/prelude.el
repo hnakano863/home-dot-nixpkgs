@@ -25,4 +25,21 @@
 ;; recentf-mode
 (add-hook 'emacs-startup-hook '(lambda () (recentf-mode +1)))
 
+;; undo-patch
+(defun my/undo-fu-before-advice (&optional arg)
+  "Turn off undo-tree-mode if it is enabled.
+ARG is required for advising."
+  (when (and (featurep 'undo-tree) undo-tree-mode)
+    (undo-tree-mode -1)))
+
+(defun my/undo-tree-before-advice (&optional arg)
+  "Turn on undo-tree-mode if it is disabled.
+ARG is required for advising."
+  (unless (or (not (featurep 'undo-tree)) undo-tree-mode)
+    (undo-tree-mode +1)))
+
+(advice-add 'undo-fu-only-undo :before #'my/undo-fu-before-advice)
+(advice-add 'undo-fu-only-redo :before #'my/undo-fu-before-advice)
+(advice-add 'undo-tree-visualize :before #'my/undo-tree-before-advice)
+
 ;;; prelude.el ends here.

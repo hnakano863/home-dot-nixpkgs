@@ -54,7 +54,8 @@
  :prefix "SPC f"
  "f" 'find-file
  "r" 'consult-recent-file
- "t" 'treemacs)
+ "t" 'treemacs
+ "u" 'undo-tree-visualize)
 
 ;; window related keybinds
 (my-bind
