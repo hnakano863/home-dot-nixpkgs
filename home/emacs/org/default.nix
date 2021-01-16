@@ -89,6 +89,9 @@ with pkgs;
         (org-roam-directory "~/Org/roam/")
         (emacsql-sqlite3-executable "${pkgs.sqlite}/bin/sqlite3")
         (org-roam-graph-executable "${pkgs.graphviz}/bin/dot")
+        (org-roam-graph-extra-config '(("layout" . "neato")
+				                               ("overlap" . "false")
+				                               ("splines" . "true")))
       '';
       hook = [
         "(org-mode . (lambda () (org-roam-mode +1)))"
