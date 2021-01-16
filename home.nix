@@ -25,6 +25,7 @@ in
     bat
     gimp
     texlive.combined.scheme-medium
+    vlc
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
