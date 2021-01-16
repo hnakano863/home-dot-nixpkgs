@@ -7,4 +7,5 @@ self: super: {
   gnuplot = super.gnuplot.overrideAttrs (old: {
     nativeBuildInputs = [ ];
   });
+  use-package = self.melpaStablePackages.use-package;
 }
